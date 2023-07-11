@@ -1,0 +1,51 @@
+.form_row{
+
+    margin: 1.5em 1em;
+
+    min-width: 30vw;
+
+    text-align: right;
+
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+.form_title{
+
+    text-align: left;
+}
+
+.form_col_label{
+
+    font-weight: bold;
+}
+
+.form_col{
+
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+}
+
+.form_col input{
+
+    width: 40vw;
+
+    padding-left: 0.5em;
+}
+
+.form_col p{
+
+    margin: 0;
+
+    font-size: 0.9em;
+    color: rgb(167, 0, 0);
+}
+
+.form_col textarea{
+
+    height: 20vh;
+    width: 40vw;
+}

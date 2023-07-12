@@ -10,8 +10,8 @@
       <label for="">Nombre</label>
     </div>
     <div class="col-8 form_col">
-      <input type="text" placeholder="Nombre y apellido">
-      <p>Introduzca su nombre y apellido</p>
+      <input type="text" placeholder="Nombre y apellido" [(ngModel)]="full_name" />
+      <p *ngIf="showNameError" >Introduzca su nombre y apellido</p>
     </div>
   </div>
   <div class="row form_row">
@@ -19,8 +19,8 @@
       <label for="">Email</label>
     </div>
     <div class="col-8 form_col">
-      <input type="text" placeholder="ejemplo@dominio.com">
-      <p>Introduzca un email válido</p>
+      <input type="text" placeholder="ejemplo@dominio.com" [(ngModel)]="email" />
+      <p *ngIf="showEmailError" >Introduzca un email válido</p>
     </div>
   </div>
   <div class="row form_row">
@@ -28,8 +28,8 @@
       <label for="">Mensaje</label>
     </div>
     <div class="col-8 form_col">
-      <textarea></textarea>
-      <p>Introduzca un mensaje</p>
+      <textarea [(ngModel)]="message" ></textarea>
+      <p *ngIf="showMessageError" >Introduzca un mensaje</p>
     </div>
   </div>
   <div class="row form_row">
@@ -37,9 +37,9 @@
       <label for="">2 + 3 = ?</label>
     </div>
     <div class="col-8 form_col">
-      <input type="text" placeholder="Respuesta">
-      <p>Validación anti-spam incorrecta</p>
-      <button (click)="newContact()" class="btn btn-primary mt-4">Enviar</button>
+      <input type="text" placeholder="Respuesta" #answerSecurityQuestion />
+      <p *ngIf="showQuestionError" >Validación anti-spam incorrecta</p>
+      <button (click)="checkSecurityQuestion(answerSecurityQuestion.value)" class="btn btn-primary mt-4">Enviar</button>
     </div>
   </div>
 </div>

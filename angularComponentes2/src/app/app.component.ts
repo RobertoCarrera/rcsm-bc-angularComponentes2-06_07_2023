@@ -1,114 +1,108 @@
 import { Component } from '@angular/core';
 
-const securityQuestion = 5;
+// Como en este caso, la respuesta es fija, la hago constante
+const securityQuestion: number = 5;
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
+  title: string = 'angularComponentes2';
 
-  title = 'angularComponentes2';
+  // Creo las variables a almacenar del formulario
+  full_name: string = '';
+  email: string = '';
+  message: string = '';
 
-  full_name = '';
-  email = '';
-  message = '';
+  // Las guardaré como objeto
+  forms: any[] = [];
 
-  showElement: boolean = false;
+  // Boolean que muestra, o no, el resultado de la información enviada
+  informationSend: boolean = false;
+  // Booleans para comprobar que los datos introducidos son correctos
   showQuestionError: boolean = false;
   showNameError: boolean = false;
   showEmailError: boolean = false;
   showMessageError: boolean = false;
 
-  forms: any = [];
+// Método que comprueba que el valor introducido en la pregunta de seguridad es correcto
+checkSecurityQuestion(answer: string): void {
 
-  checkSecurityQuestion(answer: string)
-  {
-    let correctAnswer = securityQuestion;
-    let answerToNumber = +answer;
+  let correctAnswer: number = securityQuestion;
+  let answerToNumber: number = +answer;
 
-    if(answerToNumber == correctAnswer)
-    {
+  // Si es correcto, llama a guardar los datos del formulario
+  if(answerToNumber === correctAnswer) {
 
-      this.showQuestionError = false;
-      this.newContact();
-    }else{
-
-      this.showQuestionError = true;
-      this.showElement = false;
-    }
+    this.showQuestionError = false;
+    this.newContact();
+  } else {
+    // Si no es correcto, mostrará el p debajo del input que mmuestra el mensaje de error
+    this.showQuestionError = true;
+    this.informationSend = false;
   }
+  }
+  // Método que comprueba que haya, mínimo, un apellido y no sólo un nombre
+  checkName(newName: string): void {
 
-  checkName(newName: string)
-  {
-
-  if(newName.includes(' '))
-    {
-
+    if(newName.includes(' ')) {
+      
       this.showNameError = false;
-    }else{
+    } else {
 
       this.showNameError = true;
     }
   }
+  // Método qeu comprueba que el correo contenga @ y .
+  checkEmail(newEmail: string): void {
 
-  checkEmail(newEmail: string)
-  {
-
-    let checklist = 0;
-    console.log(checklist);
-
-    if((newEmail.includes('@')) && newEmail.includes('.'))
-    {
-
-      checklist++;
+    let checklist: number = 0;
+    if(newEmail.includes('@') && newEmail.includes('.')) {
+    
+        checklist++;
     }
-
-    if (checklist == 1) {
+    if (checklist === 1) {
 
       this.showEmailError = false;
-    }else{
-
-      this.showEmailError = true;
+    } else {
+    
+        this.showEmailError = true;
     }
-    console.log(checklist);
   }
+  // Método que comprueba que el mensaje no esté vacío
+  checkMessage(newMessage: string): void {
 
-  checkMessage(newMessage: string){
-
-    if(newMessage == '')
-    {
+    if(newMessage === '') {
 
       this.showMessageError = true;
-    }else{
+    } else {
 
       this.showMessageError = false;
     }
   }
-
-  newContact()
-  {
-
+  // Método que guarda la info del formulario
+  newContact(): void {
+    // Antes de seguir, comprueba el nombre, email y mensaje
     this.checkName(this.full_name);
     this.checkEmail(this.email);
     this.checkMessage(this.message);
 
-    if((!this.showNameError) && (!this.showEmailError) && (!this.showMessageError))
-    {
+    // Si no salta ningún mensaje de error, guarda el contacto
+    if(!this.showNameError && !this.showEmailError && !this.showMessageError) {
+    
+      this.forms.push({
+        full_name: this.full_name,
+        email: this.email,
+        message: this.message
+      });
 
-      this.forms.push(
-        {
-          name: this.full_name,
-          email: this.email,
-          message: this.message,
-        }
-      );
-      
-      this.showElement = true;
-    }else{
+    this.informationSend = true;
+    } else {
 
-      this.showElement = false;
+      this.informationSend = false;
     }
   }
 }

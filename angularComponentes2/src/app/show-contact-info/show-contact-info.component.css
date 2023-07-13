@@ -1,0 +1,37 @@
+.container_show_info{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.row_show_info{
+
+    min-width: 50vw;
+
+    margin-bottom: 1em;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.row_show_info p, .row_show_info h4{
+
+    margin: 0;
+
+    display: flex;
+}
+
+.row_show_info p{
+
+    justify-content: start;
+    align-items: center;
+}
+
+.row_show_info h4{
+
+    justify-content: end;
+    text-align: center;
+}

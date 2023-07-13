@@ -1,21 +1,23 @@
 <div class="container form_container">
   <div class="row form_row">
-    <div class="col-1"></div>
+    <div class="col-4"></div>
     <div class="col-8 form_title">
       <h1>Formulario de contacto</h1>
     </div>
   </div>
   <div class="row form_row">
-    <div class="col-1 form_col_label">
+    <div class="col-4 form_col_label">
       <label for="">Nombre</label>
     </div>
     <div class="col-8 form_col">
+      <!-- Recibimos la información de todos los inputs -->
       <input type="text" placeholder="Nombre y apellido" [(ngModel)]="full_name" />
+      <!-- Mensajes que se muestran si hay algún campo erróneo -->
       <p *ngIf="showNameError" >Introduzca su nombre y apellido</p>
     </div>
   </div>
   <div class="row form_row">
-    <div class="col-1 form_col_label">
+    <div class="col-4 form_col_label">
       <label for="">Email</label>
     </div>
     <div class="col-8 form_col">
@@ -24,22 +26,31 @@
     </div>
   </div>
   <div class="row form_row">
-    <div class="col-1 form_col_label">
+    <div class="col-4 form_col_label">
       <label for="">Mensaje</label>
     </div>
     <div class="col-8 form_col">
-      <textarea [(ngModel)]="message" ></textarea>
+      <textarea [(ngModel)]="message"></textarea>
       <p *ngIf="showMessageError" >Introduzca un mensaje</p>
     </div>
   </div>
   <div class="row form_row">
-    <div class="col-1 form_col_label">
+    <div class="col-4 form_col_label">
+      <!-- Estaría bien que fuesen diferentes y cambiarlos dinámicamente -->
       <label for="">2 + 3 = ?</label>
     </div>
     <div class="col-8 form_col">
+      <!-- Creamos el binding de la respuesta que nos da el usuario -->
       <input type="text" placeholder="Respuesta" #answerSecurityQuestion />
+      <!-- Si la respuesta esta mal, saldrá sólo este campo como erróneo -->
       <p *ngIf="showQuestionError" >Validación anti-spam incorrecta</p>
+      <!-- Y la paso como argumento para llamar a la función que comprueba si el input es la respuesta correcta, cuando se hace click en el botón -->
       <button (click)="checkSecurityQuestion(answerSecurityQuestion.value)" class="btn btn-primary mt-4">Enviar</button>
     </div>
+  </div>
+  <!-- El componente hijo se mustra sólo si el captcha es correcto -->
+  <div *ngIf="informationSend">
+    <!-- Se pasa toda la información del objeto a través de la variable data_form -->
+    <app-show-contact-info [data_form]="forms"></app-show-contact-info>
   </div>
 </div>

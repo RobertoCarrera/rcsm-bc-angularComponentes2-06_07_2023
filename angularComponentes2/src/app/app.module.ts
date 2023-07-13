@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { ShowContactInfoComponent } from './show-contact-info/show-contact-info.component';
-import { FormControl } from '@angular/forms';
+// Llamamos a FormModule para poder enviar información al TS
 import { FormsModule } from '@angular/forms';
 
 @NgModule({

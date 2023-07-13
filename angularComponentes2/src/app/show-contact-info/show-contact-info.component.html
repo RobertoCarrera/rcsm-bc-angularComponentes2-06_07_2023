@@ -1,0 +1,31 @@
+<!-- Código que se mostrará debajo del principal y sólo si se cumple la condición -->
+<div class="container container_show_info">
+    <div class="row row_show_info">
+        <div class="col-6">
+            <h4>Nombre</h4>
+        </div>
+        <div class="col-6">
+            <!-- Recibimos la información y la mostramos aquí.
+            Podría haber creado un objeto más grande o, simplemente, la 
+            variable sola pero quería dejar plasmado cómo se puede acceder
+            a un objeto poniendo la posición -->
+            <p>{{data_form[0].full_name}}</p>
+        </div>
+    </div>
+    <div class="row row_show_info">
+        <div class="col-6">
+            <h4>Email</h4>
+        </div>
+        <div class="col-6">
+            <p>{{data_form[0].email}}</p>
+        </div>
+    </div>
+    <div class="row row_show_info">
+        <div class="col-6">
+            <h4>Mensaje</h4>
+        </div>
+        <div class="col-6">
+            <p>{{data_form[0].message}}</p>
+        </div>
+    </div>
+</div>

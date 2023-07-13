@@ -1,3 +1,4 @@
+// Importamos el input para poder mover los datos del padre al componente hijo
 import { Component, Input } from '@angular/core';
 
 @Component({
@@ -7,6 +8,7 @@ import { Component, Input } from '@angular/core';
 })
 export class ShowContactInfoComponent {
 
+  // Aquí se almacenará la info que envía el padre
   @Input() data_form: any;
 
   constructor(){
